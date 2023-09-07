@@ -1,0 +1,60 @@
+﻿@model IEnumerable<TerminalCommandResponse>
+@{
+    var number = 0;
+}
+
+@if (Model.Any())
+{
+    <div class="table-responsive">
+        <table id="history-table" class="table table-striped table-hover align-middle text-center">
+            <thead class="table-dark align-bottom">
+                <tr>
+                    <th class="align-middle fw-normal">№</th>
+                    <th class="fw-normal">
+                        Дата и время
+                        @await Html.PartialAsync("_SortButtons", 15)
+                    </th>
+                    <th class="fw-normal">
+                        Команда
+                        @await Html.PartialAsync("_SortButtons", 2)
+                    </th>
+                    <th class="fw-normal">
+                        Параметр 1
+                        @await Html.PartialAsync("_SortButtons", 3)
+                    </th>
+                    <th class="fw-normal">
+                        Параметр 2
+                        @await Html.PartialAsync("_SortButtons", 4)
+                    </th>
+                    <th class="fw-normal">
+                        Параметр 3
+                        @await Html.PartialAsync("_SortButtons", 5)
+                    </th>
+                    <th class="fw-normal">
+                        Статус
+                        @await Html.PartialAsync("_SortButtons", 14)
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var command in Model)
+                {
+                    <tr>
+                        <th>@(++number)</th>
+                        <td>@command.DateTime</td>
+                        <td class="text-start">@command.CommandName</td>
+                        <td>@command.FirstParameter</td>
+                        <td>@command.SecondParameter</td>
+                        <td>@command.ThirdParameter</td>
+                        <td>@command.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p class="alert alert-info text-center" role="alert">К данному терминалу команды ещё не отправлялись.</p>
+}

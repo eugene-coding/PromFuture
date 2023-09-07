@@ -1,0 +1,35 @@
+﻿@model CommandParameter
+@{
+    const string columnClass = "col mb-3";
+    const string labelClass = "form-label fw-bold";
+    const string inputClass = "form-control";
+    const string inputType = "number";
+}
+
+@if (Model.FirstParameterName is not null)
+{
+    <div class="row align-items-end">
+
+        <div class="@columnClass">
+            @Html.Label("parameter1", Model.FirstParameterName, new { Class = labelClass })
+            @Html.TextBox("parameter1", Model.FirstParameterDefaultValue, new { Class = inputClass, type = inputType })
+        </div>
+
+
+        @if (Model.SecondParameterName is not null)
+        {
+            <div class="@columnClass">
+                @Html.Label("parameter2", Model.SecondParameterName, new { Class = labelClass })
+                @Html.TextBox("parameter2", Model.SecondParameterDefaultValue, new { Class = inputClass, type = inputType })
+            </div>
+        }
+
+        @if (Model.ThirdParameterName is not null)
+        {
+            <div class="@columnClass">
+                @Html.Label("parameter3", Model.SecondParameterName, new { Class = labelClass })
+                @Html.TextBox("parameter3", Model.ThirdParameterDefaultValue, new { Class = inputClass, type = inputType })
+            </div>
+        }
+    </div>
+}

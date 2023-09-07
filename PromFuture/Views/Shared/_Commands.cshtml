@@ -1,0 +1,6 @@
+﻿@model SelectList
+
+<div class="mb-3">
+    @Html.Label("command_id", "Команда", new { Class = "form-label fw-bold"})
+    @Html.DropDownList("command_id", Model, "Выберите команду", new { Class = "form-select" })
+</div>

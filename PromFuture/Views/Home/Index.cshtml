@@ -1,0 +1,37 @@
+﻿@using Core.Responses;
+@{
+    ViewData["Title"] = "Отправка команды на терминал";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form id="form" class="bg-light mb-3 px-4 py-3">
+    <div class="row mb-3">
+        <div class="col">
+            <div class="mb-3 ">
+                @Html.Label("terminal_id", "Терминал(ы)", new { Class = "form-label fw-bold"})
+                @Html.TextArea("terminal_id", "129", new { Class = "form-control", Rows = 10 })
+            </div>
+        </div>
+
+        <div class="col">
+            <div id="commands">
+                <p>Загрузка...</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="parameters" class="mb-3"></div>
+
+    <div class="text-center">
+        <button id="send-button" class="btn btn-success mb-3" type="submit" disabled>Отправить</button>
+    </div>
+
+    <div id="send-error"></div>
+</form>
+
+<div id="history"></div>
+
+@section Scripts{
+    <script src="~/Views/Home/Index.cshtml.js" asp-append-version="true" charset="utf-8"></script>
+}
